@@ -1,36 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: "app-board",
+  templateUrl: "./board.component.html",
+  styleUrls: ["./board.component.scss"],
 })
 export class BoardComponent implements OnInit {
+  squares: any[];
+  xIsNext: boolean;
+  winner: string;
 
-  squares:any[];
-  xIsNext:boolean;
-  winner:string;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.newGame()
+    this.newGame();
   }
 
-  newGame(){
+  newGame() {
     this.squares = Array(9).fill(null);
     this.winner = null;
     this.xIsNext = true;
   }
 
-  get player(){
-    return this.xIsNext ? 'X' :'O';
+  get player() {
+    return this.xIsNext ? "X" : "O";
   }
 
-  makeMove(idx:number){
-    if(this.squares[idx]){
-      this.squares.splice(idx , 1 ,this.player)
-      this.xIsNext = !this.xIsNext 
+  makeMove(idx: number) {
+    if (!this.squares[idx]) {
+      this.squares.splice(idx, 1, this.player);
+      this.xIsNext = !this.xIsNext;
     }
 
     this.winner = this.calculateWinner();
@@ -45,7 +44,7 @@ export class BoardComponent implements OnInit {
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [2, 4, 6]
+      [2, 4, 6],
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
@@ -58,8 +57,5 @@ export class BoardComponent implements OnInit {
       }
     }
     return null;
-  
   }
-
 }
-
