@@ -13,18 +13,18 @@ export class BoardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.newGame()
   }
 
   newGame(){
-    this.squares = Array(9).fill(null)
-    this.winner = null
-    this.xIsNext = true
+    this.squares = Array(9).fill(null);
+    this.winner = null;
+    this.xIsNext = true;
   }
 
   get player(){
-    return this.xIsNext ? 'X' :'O'
+    return this.xIsNext ? 'X' :'O';
   }
 
   makeMove(idx:number){
